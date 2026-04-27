@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>dooo0t 第三方信息共享清单</title>
+  <title>dooo0t 第三方信息共享清单 / Third-Party Information Sharing List</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -16,11 +16,29 @@
       background: #fff;
       border-bottom: 1px solid #e5e5e5;
       padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       position: sticky;
       top: 0;
       z-index: 100;
     }
     header .logo { font-size: 20px; font-weight: 700; letter-spacing: 0.02em; }
+    .lang-switch { display: flex; gap: 8px; }
+    .lang-btn {
+      padding: 6px 14px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background: #fff;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+    .lang-btn.active {
+      background: #1a1a1a;
+      color: #fff;
+      border-color: #1a1a1a;
+    }
     .container {
       max-width: 980px;
       margin: 40px auto;
@@ -68,6 +86,8 @@
       color: #aaa;
       font-size: 13px;
     }
+    [data-lang] { display: none; }
+    [data-lang].visible { display: block; }
     @media (max-width: 680px) {
       .container { padding: 28px 20px; margin: 16px; }
       h1 { font-size: 22px; }
@@ -78,9 +98,13 @@
 
 <header>
   <div class="logo">dooo0t</div>
+  <div class="lang-switch">
+    <button class="lang-btn active" onclick="setLang('zh')">中文</button>
+    <button class="lang-btn" onclick="setLang('en')">English</button>
+  </div>
 </header>
 
-<main class="container">
+<main data-lang="zh" class="container visible">
   <h1>dooo0t 第三方信息共享清单</h1>
 
   <h2>一、接入SDK名单</h2>
@@ -130,9 +154,70 @@
   </div>
 </main>
 
+<main data-lang="en" class="container">
+  <h1>dooo0t Third-Party Information Sharing List</h1>
+
+  <h2>I. Integrated SDK List</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Third-Party Company Name</th>
+          <th>Product/Type</th>
+          <th>Shared Information</th>
+          <th>Purpose</th>
+          <th>Scenario</th>
+          <th>Sharing Method</th>
+          <th>Third-Party Personal Information Processing Rules</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Umeng Tongxin (Beijing) Technology Co., Ltd.; Beijing Ruixun Lingtong Technology Co., Ltd.</td>
+          <td>Umeng Mobile Analytics SDK / UMCommon</td>
+          <td>Device information (Android ID/IDFA/OAID/OpenUDID/GUID), network information</td>
+          <td>Basic statistical analysis of app launches, activity, versions, devices, and system environment</td>
+          <td>When the app launches and during normal use</td>
+          <td>Collected locally by SDK</td>
+          <td><a href="https://www.umeng.com/page/policy">https://www.umeng.com/page/policy</a></td>
+        </tr>
+        <tr>
+          <td>Umeng Tongxin (Beijing) Technology Co., Ltd.; Beijing Ruixun Lingtong Technology Co., Ltd.</td>
+          <td>Umeng Device Identifier Component / UMDevice</td>
+          <td>Device information (Android ID/IDFA/OAID/OpenUDID/GUID), network information</td>
+          <td>Generate or identify device identifiers to support device deduplication, statistical attribution, anti-fraud, and data accuracy verification</td>
+          <td>When the app launches and during normal use</td>
+          <td>Collected locally by SDK</td>
+          <td><a href="https://www.umeng.com/page/policy/">https://www.umeng.com/page/policy/</a></td>
+        </tr>
+        <tr>
+          <td>Umeng Tongxin (Beijing) Technology Co., Ltd.</td>
+          <td>Umeng App Performance Monitoring SDK</td>
+          <td>Device information (Android ID/IDFA/OAID/OpenUDID/GUID), network information</td>
+          <td>Crash monitoring, lag monitoring, and abnormal issue diagnosis</td>
+          <td>When app lag or crashes occur</td>
+          <td>Collected locally by SDK</td>
+          <td><a href="https://www.umeng.com/page/policy/">https://www.umeng.com/page/policy/</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+
 <footer>
   © 2026 开若图科技（上海）有限公司
 </footer>
 
+<script>
+  function setLang(lang) {
+    document.querySelectorAll('[data-lang]').forEach(el => {
+      el.classList.toggle('visible', el.dataset.lang === lang);
+    });
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.textContent.trim() === (lang === 'zh' ? '中文' : 'English'));
+    });
+    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+  }
+</script>
 </body>
 </html>
