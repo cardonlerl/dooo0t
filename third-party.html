@@ -152,6 +152,32 @@
       </tbody>
     </table>
   </div>
+
+  <h2>二、音乐链接解析相关域名</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>第三方域名</th>
+          <th>使用目的</th>
+          <th>共享信息名称</th>
+          <th>使用场景</th>
+          <th>共享方式</th>
+          <th>说明</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>itunes.apple.com / y.music.163.com / 163cn.tv / y.qq.com / c6.y.qq.com / y.gtimg.cn / p1.music.126.net</td>
+          <td>解析用户剪贴板中的公开音乐链接，获取歌曲公开信息</td>
+          <td>公开 URL 中的歌曲 ID、必要的 UA / Referer</td>
+          <td>用户使用音乐链接解析功能时</td>
+          <td>客户端直接请求第三方公开域名</td>
+          <td>不上传用户身份信息，不上传完整剪贴板内容；不缓存原始链接到服务器（本产品无服务器）。上述域名均支持 HTTPS。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </main>
 
 <main data-lang="en" class="container">
@@ -198,6 +224,32 @@
           <td>When app lag or crashes occur</td>
           <td>Collected locally by SDK</td>
           <td><a href="https://www.umeng.com/page/policy/">https://www.umeng.com/page/policy/</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>II. Domains Used for Music Link Parsing</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Third-Party Domains</th>
+          <th>Purpose</th>
+          <th>Shared Information</th>
+          <th>Scenario</th>
+          <th>Sharing Method</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>itunes.apple.com / y.music.163.com / 163cn.tv / y.qq.com / c6.y.qq.com / y.gtimg.cn / p1.music.126.net</td>
+          <td>Parse public music links from the user's clipboard and obtain public song information</td>
+          <td>Song ID in the public URL, required UA / Referer</td>
+          <td>When the user uses music link parsing</td>
+          <td>Direct client requests to third-party public domains</td>
+          <td>No user identity information or full clipboard content is uploaded. Original links are not cached on a server because this product has no server. These domains support HTTPS.</td>
         </tr>
       </tbody>
     </table>
